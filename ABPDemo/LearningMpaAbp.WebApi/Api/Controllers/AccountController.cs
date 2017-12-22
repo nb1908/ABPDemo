@@ -10,7 +10,7 @@ using LearningMpaAbp.Api.Models;
 using LearningMpaAbp.Authorization;
 using LearningMpaAbp.Authorization.Users;
 using LearningMpaAbp.MultiTenancy;
-using LearningMpaAbp.Users;
+//using LearningMpaAbp.Users;
 using Microsoft.Owin.Infrastructure;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;

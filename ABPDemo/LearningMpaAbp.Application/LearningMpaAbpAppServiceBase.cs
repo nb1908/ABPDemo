@@ -5,7 +5,7 @@ using Abp.IdentityFramework;
 using Abp.Runtime.Session;
 using LearningMpaAbp.Authorization.Users;
 using LearningMpaAbp.MultiTenancy;
-using LearningMpaAbp.Users;
+//using LearningMpaAbp.Users;
 using Microsoft.AspNet.Identity;
 
 namespace LearningMpaAbp

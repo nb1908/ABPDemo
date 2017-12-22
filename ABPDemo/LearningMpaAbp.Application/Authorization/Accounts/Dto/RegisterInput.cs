@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Abp.Auditing;
 using Abp.Authorization.Users;
-using LearningMpaAbp.Users;
+//using LearningMpaAbp.Users;
 using LearningMpaAbp.Validation;
 using Abp.Extensions;
 using LearningMpaAbp.Authorization.Users;

@@ -13,7 +13,7 @@ using LearningMpaAbp.Authorization.Users;
 using LearningMpaAbp.EntityFramework;
 using LearningMpaAbp.Migrations.SeedData;
 using LearningMpaAbp.MultiTenancy;
-using LearningMpaAbp.Users;
+//using LearningMpaAbp.Users;
 using Castle.MicroKernel.Registration;
 using Effort;
 using EntityFramework.DynamicFilters;

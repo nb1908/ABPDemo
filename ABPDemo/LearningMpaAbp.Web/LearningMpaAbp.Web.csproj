@@ -537,6 +537,7 @@
     <Content Include="js\helpers.js" />
     <Content Include="js\main.js" />
     <Content Include="js\script.js" />
+    <Content Include="Views\Tasks\index.js" />
     <Content Include="lib\abp-web-resources\Abp\Framework\scripts\abp.js" />
     <Content Include="lib\abp-web-resources\Abp\Framework\scripts\libs\abp.blockUI.js" />
     <Content Include="lib\abp-web-resources\Abp\Framework\scripts\libs\abp.jquery.js" />
@@ -2781,6 +2782,8 @@
     <Content Include="Scripts\jquery.signalR-2.2.2.js" />
     <Content Include="Scripts\jquery.signalR-2.2.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -2848,12 +2851,14 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Results\ChallengeResult.cs" />
     <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Controllers\TenantsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Models\Account\TenantChangeModalViewModel.cs" />
     <Compile Include="Models\Account\TenantChangeViewModel.cs" />
     <Compile Include="Models\Common\Modals\ModalHeaderViewModel.cs" />
+    <Compile Include="Models\Tasks\IndexViewModel.cs" />
     <Compile Include="Models\Layout\RightSideBarViewModel.cs" />
     <Compile Include="Models\Account\LoginFormViewModel.cs" />
     <Compile Include="Models\Account\LoginViewModel.cs" />
@@ -2991,6 +2996,10 @@
     <Content Include="Views\Tenants\_EditTenantModal.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
+    <Content Include="Views\Tasks\_List.cshtml" />
+    <Content Include="Views\Tasks\_CreateTask.cshtml" />
+    <Content Include="Views\Tasks\_EditTask.cshtml" />
+    <Content Include="Views\Tasks\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

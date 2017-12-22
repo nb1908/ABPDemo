@@ -116,6 +116,10 @@
 
     @Scripts.Render("~/Bundles/vendor/js/bottom")
 
+    @Scripts.Render("~/Bundles/js")
+    //在此处添加下面一行代码
+    @Scripts.Render("~/Bundles/unobtrusive/js")
+
     <script>
         //Localizing momentjs
         moment.locale('@Thread.CurrentThread.CurrentUICulture.Name');

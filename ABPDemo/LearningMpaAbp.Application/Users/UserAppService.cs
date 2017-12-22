@@ -15,6 +15,10 @@ using LearningMpaAbp.Roles.Dto;
 using LearningMpaAbp.Users.Dto;
 using Microsoft.AspNet.Identity;
 
+
+using Abp.AutoMapper;
+
+
 namespace LearningMpaAbp.Users
 {
     [AbpAuthorize(PermissionNames.Pages_Users)]
@@ -23,6 +27,7 @@ namespace LearningMpaAbp.Users
         private readonly UserManager _userManager;
         private readonly RoleManager _roleManager;
         private readonly IRepository<Role> _roleRepository;
+        private readonly IRepository<User, long> _userRepository;
 
         public UserAppService(
             IRepository<User, long> repository, 
@@ -44,46 +49,46 @@ namespace LearningMpaAbp.Users
             return user;
         }
 
-        public override async Task<UserDto> Create(CreateUserDto input)
-        {
-            CheckCreatePermission();
+        //public override async Task<UserDto> Create(CreateUserDto input)
+        //{
+        //    CheckCreatePermission();
 
-            var user = ObjectMapper.Map<User>(input);
+        //    var user = ObjectMapper.Map<LearningMpaAbp.Authorization.Users.User>(input);
 
-            user.TenantId = AbpSession.TenantId;
-            user.Password = new PasswordHasher().HashPassword(input.Password);
-            user.IsEmailConfirmed = true;
+        //    user.TenantId = AbpSession.TenantId;
+        //    user.Password = new PasswordHasher().HashPassword(input.Password);
+        //    user.IsEmailConfirmed = true;
 
-            //Assign roles
-            user.Roles = new Collection<UserRole>();
-            foreach (var roleName in input.RoleNames)
-            {
-                var role = await _roleManager.GetRoleByNameAsync(roleName);
-                user.Roles.Add(new UserRole(AbpSession.TenantId, user.Id, role.Id));
-            }
+        //    //Assign roles
+        //    user.Roles = new Collection<UserRole>();
+        //    foreach (var roleName in input.RoleNames)
+        //    {
+        //        var role = await _roleManager.GetRoleByNameAsync(roleName);
+        //        user.Roles.Add(new UserRole(AbpSession.TenantId, user.Id, role.Id));
+        //    }
 
-            CheckErrors(await _userManager.CreateAsync(user));
+        //    CheckErrors(await _userManager.CreateAsync(user));
 
-            return MapToEntityDto(user);
-        }
+        //    return MapToEntityDto(user);
+        //}
 
-        public override async Task<UserDto> Update(UpdateUserDto input)
-        {
-            CheckUpdatePermission();
+        //public override async Task<UserDto> Update(UpdateUserDto input)
+        //{
+        //    CheckUpdatePermission();
 
-            var user = await _userManager.GetUserByIdAsync(input.Id);
+        //    var user = await _userManager.GetUserByIdAsync(input.Id);
 
-            MapToEntity(input, user);
+        //    MapToEntity(input, user);
 
-            CheckErrors(await _userManager.UpdateAsync(user));
+        //    CheckErrors(await _userManager.UpdateAsync(user));
 
-            if (input.RoleNames != null)
-            {
-                CheckErrors(await _userManager.SetRoles(user, input.RoleNames));
-            }
+        //    if (input.RoleNames != null)
+        //    {
+        //        CheckErrors(await _userManager.SetRoles(user, input.RoleNames));
+        //    }
 
-            return await Get(input);
-        }
+        //    return await Get(input);
+        //}
 
         public override async Task Delete(EntityDto<long> input)
         {
@@ -127,6 +132,15 @@ namespace LearningMpaAbp.Users
         protected virtual void CheckErrors(IdentityResult identityResult)
         {
             identityResult.CheckErrors(LocalizationManager);
+        }
+
+        public ListResultDto<UserListDto> GetUsers()
+        {
+            var users = _userRepository.GetAllList();
+
+            return new ListResultDto<UserListDto>(
+                users.MapTo<List<UserListDto>>()
+                );
         }
     }
 }
